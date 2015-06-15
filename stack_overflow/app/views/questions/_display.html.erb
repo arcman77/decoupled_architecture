@@ -1,0 +1,8 @@
+<div class="question-display" id="<%= question.id %>">
+  <h3> <%= link_to question.title, question_path(question), id: question.id %> </h3>
+  <content> <%= question.content %> </content> <br><br>
+  <span class="question-edit-delete">
+    <%= button_to "Edit", edit_question_path(question),  form_class: "edit-question" %> <br>
+    <%= button_to "Delete", question_path(question), method: :delete, remote: true, form_class: "delete-question"  %>
+  </span>
+</div>

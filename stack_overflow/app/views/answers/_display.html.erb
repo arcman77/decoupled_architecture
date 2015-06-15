@@ -1,0 +1,6 @@
+<div class="answer-display" id="<%= answer.id %>">
+  <h3> <%= answer.title %> </h3>
+  <content> <%= answer.content %> </content> <br><br>
+  <%= button_to "Edit", edit_question_answer_path(question,answer), id: answer.id  %> <br>
+  <span class="delete"><%= button_to "Delete", question_answer_path(question,answer), method: :delete, id: answer.id, remote: true  %></span>
+</div>

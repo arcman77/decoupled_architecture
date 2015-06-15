@@ -1,0 +1,22 @@
+<div class="questions-show">
+  <h1><%= @question.title %></h1>
+  <%= render 'edit' %>
+
+</div>
+<div class="answers-new">
+  <%= form_for [@question, @answer], html: {id: "new-answer-form"} do |f| %>
+    <%= f.label :title %>:
+    <%= f.text_field :title %><br>
+
+    <%= f.label :content %>:
+    <%= f.text_field :content %><br > <br >
+
+
+    <%= f.submit %>
+  <% end %>
+</div>
+<div class="answers-index">
+  <% @answers.each do |answer| %>
+    <%= render partial: 'answers/display', locals: {question: @question, answer: answer} %>
+  <% end %>
+</div>

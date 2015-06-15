@@ -1,0 +1,15 @@
+<div class="questions-index">
+  <h1>Question index</h1>
+<div>
+  <h2 id="ask"> Ask a question? </h2>
+  <form id='form_question' action='http://localhost:3000/questions' method='POST'>
+    <input type="text" name="question[title]" value="Title">
+    <input type="text" name="question[content]" value="Content">
+    <input type="submit" value="Submit">
+  </form >
+</div>
+<div id="questions_container">
+  <% @questions.each do |question| %>
+  <%= render partial: 'display', locals: {question: question} %>
+  <% end %>
+</div>

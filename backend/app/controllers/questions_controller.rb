@@ -6,23 +6,39 @@ class QuestionsController < ApplicationController
     p "HIT: QuestionController index route"
 
     @questions = Question.all
+    #render :json => {questions: @questions}
 
-    render :json => @questions
+    render :json => {questions: @questions}
   end
 
   def create
-    p "HIT: QuestionController create route"
-    @question = Question.new(question_params)
-    if @question.save
-      render :json => @question
-    else
-      render :json => false
-    end
+
+    new_question = Question.create(question_params)
+    render :json =>{"question" => new_question}
+
+    # p "HIT: QuestionController create route"
+    # @question = Question.new(question_params)
+    # if @question.save
+    #   render :json => @question
+    # else
+    #   render :json => false
+    # end
   end
 
   def show
     @answers = @question.answers
-    render :json => @question, :json => @answers
+    render :json =>{"question" => @question, "answers" => @answers }
+  end
+
+  def destroy
+   answers =  Question.find(params[:id]).answers
+
+    if Question.destroy(params[:id])
+      answers.delete_all
+      render :json => true
+    else
+      render :json => false
+    end
   end
 
   private

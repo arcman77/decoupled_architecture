@@ -1,0 +1,9 @@
+<%= form_for @question, html: {id: "edit-question-form"} do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br>
+
+  <%= f.label :content %>:
+  <%= f.text_field :content %><br><br>
+
+  <%= f.submit %>
+<% end %>
